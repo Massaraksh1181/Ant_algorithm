@@ -1,0 +1,15 @@
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\Ant_Algorithm.csproj.AssemblyReference.cache
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\Ant_Algorithm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\Ant_Algorithm.AssemblyInfoInputs.cache
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\Ant_Algorithm.AssemblyInfo.cs
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\Ant_Algorithm.csproj.CoreCompileInputs.cache
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\bin\Debug\net7.0\Ant_Algorithm.exe
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\bin\Debug\net7.0\Ant_Algorithm.deps.json
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\bin\Debug\net7.0\Ant_Algorithm.runtimeconfig.json
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\bin\Debug\net7.0\Ant_Algorithm.dll
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\bin\Debug\net7.0\Ant_Algorithm.pdb
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\Ant_Algorithm.dll
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\refint\Ant_Algorithm.dll
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\Ant_Algorithm.pdb
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\Ant_Algorithm.genruntimeconfig.cache
+C:\Users\Massaracsh\source\repos\Ant_Algorithm\Ant_Algorithm\obj\Debug\net7.0\ref\Ant_Algorithm.dll
