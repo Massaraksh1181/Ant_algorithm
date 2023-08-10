@@ -6,6 +6,8 @@ class Program
     static void Main(string[] args)
     {
         Graph graph = new Graph();
+        Ants ants = new SimpleAnt();
+
         graph.createGraph('a', 'b', 4, 0.2f);
         graph.createGraph('a', 'c', 3, 0.2f);
         graph.createGraph('a', 'd', 2, 0.2f);
@@ -19,11 +21,8 @@ class Program
         graph.createGraph('d', 'b', 3, 0.2f);
         graph.createGraph('d', 'c', 9, 0.2f);
 
-        /* hashTables.graphAdd(myGraph, 's', 'a', 6);
-         hashTables.graphAdd(myGraph, 's', 'b', 2);
-         hashTables.graphAdd(myGraph, 'b', 'a', 3);
-         hashTables.graphAdd(myGraph, 'b', 'f', 5);
-         hashTables.graphAdd(myGraph, 'a', 'f', 1);*/
+        Algorithm algorithm = new Algorithm(ants,graph);
+        algorithm.desireСhoice('a').ForEach(Console.WriteLine);
 
 
 

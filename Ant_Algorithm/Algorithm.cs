@@ -1,4 +1,7 @@
-﻿namespace Ant_Algorithm;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Ant_Algorithm;
 
 internal class Algorithm
 {
@@ -11,23 +14,31 @@ internal class Algorithm
         this.graph = graph;
     }
 
-    //желание перехода из i в j-ю вершину
-    public char desireСhoice ()
-    {
-        char nextNode = '-';// следующий выбранный с наибольшей веротяностью узел
+    Dictionary<char, KeyValuePair<float, float>> neighbors = new Dictionary<char, KeyValuePair<float, float>>();// словарь хрянящий соседей точки
+    HashSet<char> nodesFromList = new HashSet<char>();// набор с уникальными точками
+    Dictionary<char, float> desire = new Dictionary<char, float>(); // словарь с желанием перехода в соседнюю точку
+    Dictionary<char, float> probability = new Dictionary<char, float>(); // словарь с вероятностью перехода в соседнюю точку
+    List<char> visitedNodes = new List<char>(); // список посещенных узлов одного муравья в этой итерации
 
-        Dictionary<char, KeyValuePair<float, float>> neighbors = new Dictionary<char, KeyValuePair<float, float>>();// словарь хрянящий соседей точки
-        HashSet<char> nodesFromList = new HashSet<char>();// набор с уникальными точками
-        Dictionary<char, float> desire = new Dictionary<char, float>(); // словарь с желанием перехода в соседнюю точку
-        Dictionary<char, float> probability = new Dictionary<char, float>(); // словарь с вероятностью перехода в соседнюю точку
+    //желание перехода из i в j-ю вершину
+    public List<char> desireСhoice (char nodeAnt) // !!!!!!!!!!!!!!! переменная в параметре - временная мера, та, с которой начинает путь каждый новый муравей
+    {
+        visitedNodes.Add(nodeAnt);
+
+        neighbors.Clear();
+        nodesFromList.Clear();
+        desire.Clear();
+        probability.Clear();
+
+        char nextNode = '-';// следующий выбранный с наибольшей веротяностью узел
 
         foreach (var nodesFrom in graph.mapDistancesPheromone)
         {
             nodesFromList.Add(nodesFrom.Key.Key);
         }
 
-        foreach (char nodeAnt in nodesFromList) // внешний класс, начинает с каждой вершины. олицетворяет муравьев, количество которых равно кол-ву вершин
-        {
+        //foreach (char nodeAnt in nodesFromList) // внешний класс, начинает с каждой вершины. олицетворяет муравьев, количество которых равно кол-ву вершин
+        //{
             foreach (var node in graph.mapDistancesPheromone) // поиск соседей для выбранной вершины
             {
                 if (node.Key.Key == nodeAnt)//если ключ-откуда данного узла совпадает с обрабатываемым сейчас узлом
@@ -44,7 +55,7 @@ internal class Algorithm
                 desireSum +=nodeDesire.Value;
             }
 
-            foreach (var nodeDesire in desire)// высчитываем сумму всех желаний для соседних точек
+            foreach (var nodeDesire in desire)// высчитываем веротяность перехода для соседних точек
             {
                 probability.Add(nodeDesire.Key, nodeDesire.Value/desireSum);
             }
@@ -52,15 +63,23 @@ internal class Algorithm
             float temp = 0;
             foreach (var nodeProbaboloty in probability) // поиск вершины с наибольшей вероятностью
             {
-                if (nodeProbaboloty.Value > temp)
+                if (nodeProbaboloty.Value > temp)// если вероятность перехода в точку больше чем у предыдущей
                 {
-                    temp = nodeProbaboloty.Value;
-                    nextNode = nodeProbaboloty.Key;
+                    if (visitedNodes.Contains(nodeProbaboloty.Key) == false) // проверка на то, что вершины нет в списке пройденных вершин
+                    {
+                        temp = nodeProbaboloty.Value;
+                        nextNode = nodeProbaboloty.Key;
+                    }
                 }
             }
-            
-        }
-        return nextNode;
+
+        // }
+       // visitedNodes.Add(nextNode);// добавление в список пройденных вершин
+
+        if (nextNode.Equals('-')==false) //если еще есть узел для перехода
+        desireСhoice(nextNode);// рекурсивный вызов
+
+        return visitedNodes;
     }
  
     //распределение ферамона по граням 
