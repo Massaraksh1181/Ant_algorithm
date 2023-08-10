@@ -15,7 +15,6 @@ internal class Algorithm
     }
 
     Dictionary<char, KeyValuePair<float, float>> neighbors = new Dictionary<char, KeyValuePair<float, float>>();// словарь хрянящий соседей точки
-    HashSet<char> nodesFromList = new HashSet<char>();// набор с уникальными точками
     Dictionary<char, float> desire = new Dictionary<char, float>(); // словарь с желанием перехода в соседнюю точку
     Dictionary<char, float> probability = new Dictionary<char, float>(); // словарь с вероятностью перехода в соседнюю точку
     List<char> visitedNodes = new List<char>(); // список посещенных узлов одного муравья в этой итерации
@@ -26,19 +25,11 @@ internal class Algorithm
         visitedNodes.Add(nodeAnt);
 
         neighbors.Clear();
-        nodesFromList.Clear();
         desire.Clear();
         probability.Clear();
 
         char nextNode = '-';// следующий выбранный с наибольшей веротяностью узел
 
-        foreach (var nodesFrom in graph.mapDistancesPheromone)
-        {
-            nodesFromList.Add(nodesFrom.Key.Key);
-        }
-
-        //foreach (char nodeAnt in nodesFromList) // внешний класс, начинает с каждой вершины. олицетворяет муравьев, количество которых равно кол-ву вершин
-        //{
             foreach (var node in graph.mapDistancesPheromone) // поиск соседей для выбранной вершины
             {
                 if (node.Key.Key == nodeAnt)//если ключ-откуда данного узла совпадает с обрабатываемым сейчас узлом
@@ -60,6 +51,8 @@ internal class Algorithm
                 probability.Add(nodeDesire.Key, nodeDesire.Value/desireSum);
             }
 
+
+
             float temp = 0;
             foreach (var nodeProbaboloty in probability) // поиск вершины с наибольшей вероятностью
             {
@@ -72,9 +65,6 @@ internal class Algorithm
                     }
                 }
             }
-
-        // }
-       // visitedNodes.Add(nextNode);// добавление в список пройденных вершин
 
         if (nextNode.Equals('-')==false) //если еще есть узел для перехода
         desireСhoice(nextNode);// рекурсивный вызов
