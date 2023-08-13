@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ant_Algorithm", "Ant_Algorithm\Ant_Algorithm.csproj", "{03982289-B96B-476A-93C2-EEEFCE22B189}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dijkstra's_algorithm", "..\Dijkstra's_algorithm\Dijkstra's_algorithm\Dijkstra's_algorithm.csproj", "{42D6D5FF-A303-43ED-BC4D-2331A0E7C907}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{03982289-B96B-476A-93C2-EEEFCE22B189}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03982289-B96B-476A-93C2-EEEFCE22B189}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03982289-B96B-476A-93C2-EEEFCE22B189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42D6D5FF-A303-43ED-BC4D-2331A0E7C907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D6D5FF-A303-43ED-BC4D-2331A0E7C907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D6D5FF-A303-43ED-BC4D-2331A0E7C907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D6D5FF-A303-43ED-BC4D-2331A0E7C907}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
