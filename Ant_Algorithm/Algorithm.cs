@@ -5,10 +5,10 @@ namespace Ant_Algorithm;
 
 internal class Algorithm
 {
-    Ants ant;
+    Ant ant;
     Graph graph;
 
-    public Algorithm(Ants ant, Graph graph)
+    public Algorithm(Ant ant, Graph graph)
     {
         this.ant = ant;
         this.graph = graph;
@@ -24,17 +24,14 @@ internal class Algorithm
     public KeyValuePair<List<char>, float> desireСhoice(char nodeAnt) 
     {
         visitedNodes.Add(nodeAnt);
-
-        neighbors.Clear();
-        desire.Clear();
-        probability.Clear();
+/////
 
         char nextNode = '+';// следующий выбранный с наибольшей веротяностью узел
 
-        foreach (var node in graph.mapDistancesPheromone) // поиск соседей для выбранной вершины
+        foreach (var node in graph.mapDistancesPheromone[nodeAnt]) // поиск соседей для выбранной вершины
         {
-            if ((node.Key.Key == nodeAnt) && (visitedNodes.Contains(node.Key.Value) == false))//если ключ-откуда данного узла совпадает с обрабатываемым сейчас узлом И не был посещен
-                neighbors.Add(node.Key.Value, new KeyValuePair<float, float>(node.Value.Key, node.Value.Value));
+            if (visitedNodes.Contains(node.Key) == false)// если вершина-куда еще не была посещена
+                neighbors.Add(node.Key, new KeyValuePair<float, float>(node.Value.Key, node.Value.Value));
         }
 
         foreach (var node in neighbors)// заполняем словарь с желанием перехода в каждую соседнюю точку
@@ -63,18 +60,21 @@ internal class Algorithm
             }
         }
 
-        KeyValuePair<char, char> distanceNode = new KeyValuePair<char, char>(nodeAnt, nextNode);
-
         if (neighbors.Count != 0)//если еще есть соседи для перехода  //if (nextNode.Equals('+')==false) 
         {
-            distance += graph.mapDistancesPheromone[distanceNode].Key; // подсчет дистанции всего маршрута
+            distance += neighbors[nextNode].Key;
+
+            neighbors.Clear();
+            desire.Clear();
+            probability.Clear();
+
             desireСhoice(nextNode);// рекурсивный вызов  
         }
         else // возвращение маршрута в начальную точку
-        { 
-            KeyValuePair<char, char> toStart = new KeyValuePair<char, char>(nodeAnt, visitedNodes[0]);
+        {
+            neighbors = graph.mapDistancesPheromone[nodeAnt];//
+            distance += neighbors[visitedNodes[0]].Key; // подсчет дистанции всего маршрута с последнем пунктом
             visitedNodes.Add(visitedNodes[0]);
-            distance += graph.mapDistancesPheromone[toStart].Key; // подсчет дистанции всего маршрута с последнем пунктом          
         }
 
         KeyValuePair<List<char>, float> oneAntWay = new KeyValuePair<List<char>, float>(visitedNodes, distance);
@@ -82,7 +82,7 @@ internal class Algorithm
         return oneAntWay;
     }
 
-    public void clearer()
+    public void clearr()
     {
         neighbors.Clear();
         desire.Clear();

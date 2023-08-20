@@ -1,6 +1,6 @@
 ﻿namespace Ant_Algorithm;
 
-internal abstract class Ants
+internal abstract class Ant
 {
     // значение константы Q, отвечающей за количество ферамона
     public int Q;

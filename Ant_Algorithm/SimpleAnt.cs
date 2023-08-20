@@ -1,6 +1,6 @@
 ﻿namespace Ant_Algorithm;
 
-internal class SimpleAnt : Ants
+internal class SimpleAnt : Ant
 {
     public SimpleAnt() 
     { 

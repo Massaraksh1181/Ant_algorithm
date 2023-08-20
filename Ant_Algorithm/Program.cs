@@ -6,44 +6,49 @@ class Program
     static void Main(string[] args)
     {
         Graph graph = new Graph();
-        Ants ants = new SimpleAnt();
-
-        graph.createGraph('a', 'b', 4, 0.2f);
-        graph.createGraph('a', 'c', 3, 0.2f);
-        graph.createGraph('a', 'd', 5, 0.2f);
-        graph.createGraph('b', 'a', 4, 0.2f);
-        graph.createGraph('b', 'c', 7, 0.2f);
-        graph.createGraph('b', 'd', 3, 0.2f);
-        graph.createGraph('c', 'a', 3, 0.2f);
-        graph.createGraph('c', 'b', 7, 0.2f);
-        graph.createGraph('c', 'd', 9, 0.2f);
-        graph.createGraph('d', 'a', 5, 0.2f);
-        graph.createGraph('d', 'b', 3, 0.2f);
-        graph.createGraph('d', 'c', 9, 0.2f);
+        Ant ants = new SimpleAnt();
 
         Algorithm algorithm = new Algorithm(ants,graph);
+   
+        graph.mapDistancesPheromone['a'] = 
+            new Dictionary<char, KeyValuePair<float, float>>() { 
+                { 'b', new KeyValuePair<float,float> (4f, 0.2f) }, 
+                { 'c', new KeyValuePair<float, float>(3f, 0.2f) }, 
+                { 'd', new KeyValuePair<float, float>(5f, 0.2f) } };
+        graph.mapDistancesPheromone['b'] = 
+            new Dictionary<char, KeyValuePair<float, float>>() { 
+                { 'a', new KeyValuePair<float, float>(4f, 0.2f) }, 
+                { 'c', new KeyValuePair<float, float>(7f, 0.2f) }, 
+                { 'd', new KeyValuePair<float, float>(3f, 0.2f) } };
+        graph.mapDistancesPheromone['c'] = 
+            new Dictionary<char, KeyValuePair<float, float>>() { 
+                { 'a', new KeyValuePair<float, float>(3f, 0.2f) }, 
+                { 'b', new KeyValuePair<float, float>(7f, 0.2f) }, 
+                { 'd', new KeyValuePair<float, float>(9f, 0.2f) } };
+        graph.mapDistancesPheromone['d'] = 
+            new Dictionary<char, KeyValuePair<float, float>>() { 
+                { 'a', new KeyValuePair<float, float>(5f, 0.2f) }, 
+                { 'b', new KeyValuePair<float, float>(3f, 0.2f) }, 
+                { 'c', new KeyValuePair<float, float>(9f, 0.2f) } };
 
-        KeyValuePair<List<char>, float> oneAntWay = algorithm.desireСhoice('a');
-        oneAntWay.Key.ForEach(Console.WriteLine);
-        Console.WriteLine(oneAntWay.Value);
+        KeyValuePair<List<char>, float> AntWay1 = algorithm.desireСhoice('c');
+        AntWay1.Key.ForEach(Console.WriteLine);
+        Console.WriteLine(AntWay1.Value);
+        algorithm.clearr();
 
-        algorithm.clearer();
+        KeyValuePair<List<char>, float> AntWay2 = algorithm.desireСhoice('b');
+        AntWay2.Key.ForEach(Console.WriteLine);
+        Console.WriteLine(AntWay2.Value);
+        algorithm.clearr();
 
-        KeyValuePair<List<char>, float> twoAntWay = algorithm.desireСhoice('b');
-        twoAntWay.Key.ForEach(Console.WriteLine);
-        Console.WriteLine(twoAntWay.Value);
+        KeyValuePair<List<char>, float> AntWay3 = algorithm.desireСhoice('a');
+        AntWay3.Key.ForEach(Console.WriteLine);
+        Console.WriteLine(AntWay3.Value);
+        algorithm.clearr();
 
-        algorithm.clearer();
-
-        KeyValuePair<List<char>, float> threeAntWay = algorithm.desireСhoice('c');
-        threeAntWay.Key.ForEach(Console.WriteLine);
-        Console.WriteLine(threeAntWay.Value);
-
-        algorithm.clearer();
-
-        KeyValuePair<List<char>, float> fourAntWay = algorithm.desireСhoice('d');
-        fourAntWay.Key.ForEach(Console.WriteLine);
-        Console.WriteLine(fourAntWay.Value);
-
+        KeyValuePair<List<char>, float> AntWay4 = algorithm.desireСhoice('d');
+        AntWay4.Key.ForEach(Console.WriteLine);
+        Console.WriteLine(AntWay4.Value);
+        algorithm.clearr();
     }
 }
