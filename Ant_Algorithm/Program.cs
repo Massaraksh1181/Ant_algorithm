@@ -31,7 +31,7 @@ class Program
                 { 'b', new KeyValuePair<float, float>(3f, 0.2f) }, 
                 { 'c', new KeyValuePair<float, float>(9f, 0.2f) } };
 
-        KeyValuePair<List<char>, float> AntWay1 = algorithm.desireСhoice('c');
+        KeyValuePair<List<char>, float> AntWay1 = algorithm.desireСhoice('a');
         AntWay1.Key.ForEach(Console.WriteLine);
         Console.WriteLine(AntWay1.Value);
         algorithm.clearr();
@@ -41,7 +41,7 @@ class Program
         Console.WriteLine(AntWay2.Value);
         algorithm.clearr();
 
-        KeyValuePair<List<char>, float> AntWay3 = algorithm.desireСhoice('a');
+        KeyValuePair<List<char>, float> AntWay3 = algorithm.desireСhoice('c');
         AntWay3.Key.ForEach(Console.WriteLine);
         Console.WriteLine(AntWay3.Value);
         algorithm.clearr();

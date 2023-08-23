@@ -24,7 +24,10 @@ internal class Algorithm
     public KeyValuePair<List<char>, float> desireСhoice(char nodeAnt) 
     {
         visitedNodes.Add(nodeAnt);
-/////
+        /////
+        neighbors.Clear();
+        desire.Clear();
+        probability.Clear();
 
         char nextNode = '+';// следующий выбранный с наибольшей веротяностью узел
 
@@ -63,22 +66,20 @@ internal class Algorithm
         if (neighbors.Count != 0)//если еще есть соседи для перехода  //if (nextNode.Equals('+')==false) 
         {
             distance += neighbors[nextNode].Key;
-
-            neighbors.Clear();
-            desire.Clear();
-            probability.Clear();
-
             desireСhoice(nextNode);// рекурсивный вызов  
         }
         else // возвращение маршрута в начальную точку
         {
-            neighbors = graph.mapDistancesPheromone[nodeAnt];//
-            distance += neighbors[visitedNodes[0]].Key; // подсчет дистанции всего маршрута с последнем пунктом
+            foreach (var node in graph.mapDistancesPheromone[nodeAnt]) // 
+            {
+                if (node.Key.Equals(visitedNodes[0]))//
+                    distance += node.Value.Key;
+            }
+
             visitedNodes.Add(visitedNodes[0]);
         }
 
         KeyValuePair<List<char>, float> oneAntWay = new KeyValuePair<List<char>, float>(visitedNodes, distance);
-
         return oneAntWay;
     }
 
