@@ -9,46 +9,188 @@ class Program
         Ant ants = new SimpleAnt();
 
         Algorithm algorithm = new Algorithm(ants,graph);
-   
-        graph.mapDistancesPheromone['a'] = 
-            new Dictionary<char, KeyValuePair<float, float>>() { 
-                { 'b', new KeyValuePair<float,float> (4f, 0.2f) }, 
-                { 'c', new KeyValuePair<float, float>(3f, 0.2f) }, 
-                { 'd', new KeyValuePair<float, float>(5f, 0.2f) } };
-        graph.mapDistancesPheromone['b'] = 
-            new Dictionary<char, KeyValuePair<float, float>>() { 
-                { 'a', new KeyValuePair<float, float>(4f, 0.2f) }, 
-                { 'c', new KeyValuePair<float, float>(7f, 0.2f) }, 
-                { 'd', new KeyValuePair<float, float>(3f, 0.2f) } };
-        graph.mapDistancesPheromone['c'] = 
-            new Dictionary<char, KeyValuePair<float, float>>() { 
-                { 'a', new KeyValuePair<float, float>(3f, 0.2f) }, 
-                { 'b', new KeyValuePair<float, float>(7f, 0.2f) }, 
-                { 'd', new KeyValuePair<float, float>(9f, 0.2f) } };
-        graph.mapDistancesPheromone['d'] = 
-            new Dictionary<char, KeyValuePair<float, float>>() { 
-                { 'a', new KeyValuePair<float, float>(5f, 0.2f) }, 
-                { 'b', new KeyValuePair<float, float>(3f, 0.2f) }, 
-                { 'c', new KeyValuePair<float, float>(9f, 0.2f) } };
 
-        KeyValuePair<List<char>, float> AntWay1 = algorithm.desireСhoice('a');
-        AntWay1.Key.ForEach(Console.WriteLine);
-        Console.WriteLine(AntWay1.Value);
-        algorithm.clearr();
+        /* graph.mapDistancesPheromone['a'] = 
+             new Dictionary<char, KeyValuePair<float, float>>() { 
+                 { 'b', new KeyValuePair<float,float> (4f, 0.2f) }, 
+                 { 'c', new KeyValuePair<float, float>(3f, 0.2f) }, 
+                 { 'd', new KeyValuePair<float, float>(5f, 0.2f) } };
+         graph.mapDistancesPheromone['b'] = 
+             new Dictionary<char, KeyValuePair<float, float>>() { 
+                 { 'a', new KeyValuePair<float, float>(4f, 0.2f) }, 
+                 { 'c', new KeyValuePair<float, float>(7f, 0.2f) }, 
+                 { 'd', new KeyValuePair<float, float>(3f, 0.2f) } };
+         graph.mapDistancesPheromone['c'] = 
+             new Dictionary<char, KeyValuePair<float, float>>() { 
+                 { 'a', new KeyValuePair<float, float>(3f, 0.2f) }, 
+                 { 'b', new KeyValuePair<float, float>(7f, 0.2f) }, 
+                 { 'd', new KeyValuePair<float, float>(9f, 0.2f) } };
+         graph.mapDistancesPheromone['d'] = 
+             new Dictionary<char, KeyValuePair<float, float>>() { 
+                 { 'a', new KeyValuePair<float, float>(5f, 0.2f) }, 
+                 { 'b', new KeyValuePair<float, float>(3f, 0.2f) }, 
+                 { 'c', new KeyValuePair<float, float>(9f, 0.2f) } };*/
 
-        KeyValuePair<List<char>, float> AntWay2 = algorithm.desireСhoice('b');
-        AntWay2.Key.ForEach(Console.WriteLine);
-        Console.WriteLine(AntWay2.Value);
-        algorithm.clearr();
+        graph.mapDistancesPheromone['a'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'b', new KeyValuePair<float,float> (4f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(3f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(5f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(7f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(8f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(3f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(6f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(12f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(15f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(2f, 0.2f) }};
+        graph.mapDistancesPheromone['b'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(4f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(7f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(3f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(8f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(12f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(14f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(3f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(2f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(3f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(6f, 0.2f) }};
+        graph.mapDistancesPheromone['c'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(3f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(7f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(5f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(5f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(6f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(16f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(20f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(3f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(13f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(5f, 0.2f) }};
+        graph.mapDistancesPheromone['d'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(5f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(3f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(7f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(12f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(4f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(2f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(2f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(7f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(15f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(1f, 0.2f) }};
+        graph.mapDistancesPheromone['1'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(7f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(8f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(5f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(7f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(8f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(2f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(3f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(6f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(7f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(8f, 0.2f) }};
+    graph.mapDistancesPheromone['2'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(8f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(12f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(5f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(12f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(8f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(5f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(13f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(24f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(8f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(15f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(9f, 0.2f) }};
+        graph.mapDistancesPheromone['3'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(3f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(9f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(6f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(4f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(5f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(18f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(17f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(24f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(4f, 0.2f) }};
+        graph.mapDistancesPheromone['4'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(6f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(14f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(16f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(2f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(2f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(13f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(18f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(20f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(7f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(8f, 0.2f) }};
+        graph.mapDistancesPheromone['5'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(12f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(3f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(20f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(2f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(3f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(24f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(17f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(10f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(11f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(3f, 0.2f) }};
+        graph.mapDistancesPheromone['6'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(9f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(2f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(3f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(7f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(6f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(8f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(24f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(20f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(10f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(16f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(6f, 0.2f) }};
+        graph.mapDistancesPheromone['7'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(15f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(3f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(13f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(15f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(7f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(15f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(7f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(11f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(16f, 0.2f) },
+                { '8', new KeyValuePair<float, float>(21f, 0.2f) }};
+        graph.mapDistancesPheromone['8'] =
+            new Dictionary<char, KeyValuePair<float, float>>() {
+                { 'a', new KeyValuePair<float, float>(2f, 0.2f) },
+                { 'b', new KeyValuePair<float, float>(6f, 0.2f) },
+                { 'c', new KeyValuePair<float, float>(5f, 0.2f) },
+                { 'd', new KeyValuePair<float, float>(1f, 0.2f) },
+                { '1', new KeyValuePair<float, float>(8f, 0.2f) },
+                { '2', new KeyValuePair<float, float>(9f, 0.2f) },
+                { '3', new KeyValuePair<float, float>(4f, 0.2f) },
+                { '4', new KeyValuePair<float, float>(8f, 0.2f) },
+                { '5', new KeyValuePair<float, float>(3f, 0.2f) },
+                { '6', new KeyValuePair<float, float>(6f, 0.2f) },
+                { '7', new KeyValuePair<float, float>(21f, 0.2f) }};
 
-        KeyValuePair<List<char>, float> AntWay3 = algorithm.desireСhoice('c');
-        AntWay3.Key.ForEach(Console.WriteLine);
-        Console.WriteLine(AntWay3.Value);
-        algorithm.clearr();
+        for (int i=0;i<100;i++)
+        algorithm.iteration(graph.mapDistancesPheromone);
 
-        KeyValuePair<List<char>, float> AntWay4 = algorithm.desireСhoice('d');
-        AntWay4.Key.ForEach(Console.WriteLine);
-        Console.WriteLine(AntWay4.Value);
-        algorithm.clearr();
+
     }
 }
