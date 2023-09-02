@@ -10,26 +10,26 @@ class Program
 
         Algorithm algorithm = new Algorithm(ants,graph);
 
-        /* graph.mapDistancesPheromone['a'] = 
+         /*graph.mapDistancesPheromone['a'] = 
              new Dictionary<char, KeyValuePair<float, float>>() { 
-                 { 'b', new KeyValuePair<float,float> (4f, 0.2f) }, 
-                 { 'c', new KeyValuePair<float, float>(3f, 0.2f) }, 
-                 { 'd', new KeyValuePair<float, float>(5f, 0.2f) } };
+                 { 'b', new KeyValuePair<float,float> (40f, 0.2f) }, 
+                 { 'c', new KeyValuePair<float, float>(30f, 0.2f) }, 
+                 { 'd', new KeyValuePair<float, float>(50f, 0.2f) } };
          graph.mapDistancesPheromone['b'] = 
              new Dictionary<char, KeyValuePair<float, float>>() { 
-                 { 'a', new KeyValuePair<float, float>(4f, 0.2f) }, 
-                 { 'c', new KeyValuePair<float, float>(7f, 0.2f) }, 
-                 { 'd', new KeyValuePair<float, float>(3f, 0.2f) } };
+                 { 'a', new KeyValuePair<float, float>(40f, 0.2f) }, 
+                 { 'c', new KeyValuePair<float, float>(70f, 0.2f) }, 
+                 { 'd', new KeyValuePair<float, float>(30f, 0.2f) } };
          graph.mapDistancesPheromone['c'] = 
              new Dictionary<char, KeyValuePair<float, float>>() { 
-                 { 'a', new KeyValuePair<float, float>(3f, 0.2f) }, 
-                 { 'b', new KeyValuePair<float, float>(7f, 0.2f) }, 
-                 { 'd', new KeyValuePair<float, float>(9f, 0.2f) } };
+                 { 'a', new KeyValuePair<float, float>(30f, 0.2f) }, 
+                 { 'b', new KeyValuePair<float, float>(70f, 0.2f) }, 
+                 { 'd', new KeyValuePair<float, float>(90f, 0.2f) } };
          graph.mapDistancesPheromone['d'] = 
              new Dictionary<char, KeyValuePair<float, float>>() { 
-                 { 'a', new KeyValuePair<float, float>(5f, 0.2f) }, 
-                 { 'b', new KeyValuePair<float, float>(3f, 0.2f) }, 
-                 { 'c', new KeyValuePair<float, float>(9f, 0.2f) } };*/
+                 { 'a', new KeyValuePair<float, float>(50f, 0.2f) }, 
+                 { 'b', new KeyValuePair<float, float>(30f, 0.2f) }, 
+                 { 'c', new KeyValuePair<float, float>(90f, 0.2f) } };*/
 
         graph.mapDistancesPheromone['a'] =
             new Dictionary<char, KeyValuePair<float, float>>() {
@@ -188,9 +188,7 @@ class Program
                 { '6', new KeyValuePair<float, float>(6f, 0.2f) },
                 { '7', new KeyValuePair<float, float>(21f, 0.2f) }};
 
-        for (int i=0;i<100;i++)
+        for (int i=0;i<800;i++)
         algorithm.iteration(graph.mapDistancesPheromone);
-
-
     }
 }

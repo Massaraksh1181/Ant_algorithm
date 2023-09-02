@@ -4,9 +4,10 @@ internal class SimpleAnt : Ant
 {
     public SimpleAnt() 
     { 
-        Q = 5;
+        Q = 5f;
+        p = 0.8f;
         description = "муравьи как муравьи";
-        route = new Queue<char>();
+        a = 2;
+        b = 2;
     }
-    
 }
