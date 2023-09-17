@@ -8,6 +8,6 @@ internal class SimpleAnt : Ant
         p = 0.8f;
         description = "муравьи как муравьи";
         a = 2;
-        b = 2;
+        b = 4;
     }
 }

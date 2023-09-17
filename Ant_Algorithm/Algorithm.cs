@@ -7,6 +7,18 @@ internal class Algorithm
     Ant ant;
     Graph graph;
 
+    IGraph_symmetry graphSymmetry = new Symmetric_graph(); //по умолчанию алгоритм настроен для симметричного графа
+    public void setGraphSymmetry(IGraph_symmetry graphSymmetry) // возможность изменения алгоритма для работы с симметричным/ассимтеричным графом во время выполнения
+    {
+        graphSymmetry = this.graphSymmetry;
+    }
+
+    ILooped_route loopedRoute = new LoopedRoute();//по умолчанию алгоритм настроен для возвращения графа в начальную точку
+    public void setGraphLooped(ILooped_route loopedRoute) // возможность изменения алгоритма для возвращения в начальную точку/не возвращения во время выполнения
+    {
+        loopedRoute = this.loopedRoute;
+    }
+
     public Algorithm(Ant ant, Graph graph)
     {
         this.ant = ant;
@@ -22,7 +34,7 @@ internal class Algorithm
 
     float distance = 0;
 
-    //желание перехода из i в j-ю вершину
+    //построение маршрута для одного муравья
     public void oneAntWaySearch(char nodeAnt) 
     {
         visitedNodes.Add(nodeAnt);
@@ -72,14 +84,9 @@ internal class Algorithm
             distance += neighbors[nextNode].Key;
             oneAntWaySearch(nextNode);// рекурсивный вызов  
         }
-        else // возвращение маршрута в начальную точку
+        else // если непосещенных соседей не осталось
         {
-            foreach (var node in graph.mapDistancesPheromone[nodeAnt]) //  поиск последнего узла                    ///////////////// блок для возврата в последню точку
-            {
-                if (node.Key.Equals(visitedNodes[0]))// поиск расстояния из последнего узла в начальную точку
-                    distance += node.Value.Key;
-            }
-            visitedNodes.Add(visitedNodes[0]); // добавление последнего пункта в список посещенных                  /////////////////
+            loopedRoute.returnToStart(graph.mapDistancesPheromone, visitedNodes, distance, nodeAnt);// возвращение в начальную точку (если алгоритм предусматривает)
             oneIterationWay.Add(new List<char>(visitedNodes), distance); // добавление списка прйденных пунктов 1-го муровья (и пройденного растояния) в словарь одной итерации
         }     
     }
@@ -100,7 +107,6 @@ internal class Algorithm
             oneAntWaySearch(node.Key);
             clear();
         }
-
         pheromoneDistribution(graph);  
     }
 
@@ -119,16 +125,7 @@ internal class Algorithm
 
         foreach (var node in oneIterationWay) // распределение ферамона по одному маршруту (в рамках однйо итерации)
         {
-            for (var i = 0; i < (node.Key.Count - 1); i++) // перебор всех пунктов в маршруте
-            {
-                tempDictionary = graph[node.Key[i]];
-                tempDictionary[node.Key[i + 1]] = new KeyValuePair<float, float>(tempDictionary[node.Key[i + 1]].Key,  tempDictionary[node.Key[i + 1]].Value + ant.Q / node.Value);
-
-                ///// заполнение ферамона на промежутке в обратную сторону
-                tempDictionary = graph[node.Key[i+1]];
-                tempDictionary[node.Key[i]] = new KeyValuePair<float, float>(tempDictionary[node.Key[i]].Key, tempDictionary[node.Key[i]].Value  + ant.Q / node.Value);
-                /////
-            }
+            graphSymmetry.pheromoneDistribution(tempDictionary, node, graph, ant.Q);
         }
 
         //////////////  блок-тест для вывода

@@ -188,7 +188,7 @@ class Program
                 { '6', new KeyValuePair<float, float>(6f, 0.2f) },
                 { '7', new KeyValuePair<float, float>(21f, 0.2f) }};
 
-        for (int i=0;i<800;i++)
+        for (int i=0;i<500;i++)
         algorithm.iteration(graph.mapDistancesPheromone);
     }
 }
